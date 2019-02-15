@@ -1,5 +1,7 @@
 import requests
 
+from ghwh_data import render
+
 
 headers = {
     "X-GitHub-Event": "push",
@@ -8,9 +10,10 @@ headers = {
 }
 
 
-payload = load_payload("push")
+payload = render('push.json')
 
 
 def main():
+    print(payload)
     resp = requests.post("http://localhost:5000/webhook", json=payload, headers=headers)
     print(resp)

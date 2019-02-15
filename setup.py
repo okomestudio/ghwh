@@ -42,6 +42,9 @@ setup(
     version=find_meta("version"),
     platforms=["Linux"],
     classifiers=[],
+    package_data={
+        "ghwh_data": ["payloads/*.j2"],
+    },
     package_dir={"": "src"},
     packages=find_packages("src"),
     scripts=[],

@@ -1,12 +1,12 @@
-from ghwh.callbacks import register
-from ghwh.app import start
+from ghwh import register_callback
+from ghwh import start
 
 
 def handler(payload):
     print(payload)
 
 
-register("push", handler)
+register_callback("push", handler)
 
 
 def main():

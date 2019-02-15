@@ -18,7 +18,7 @@ def _resp(payload, status_code=200):
 
 @webhook.route("/", methods=["GET"])
 def index():
-    return _resp({"message": f"github-webhook {__version__}"})
+    return _resp({"message": f"ghwh v{__version__}"})
 
 
 @webhook.route("/webhook", methods=["POST"])

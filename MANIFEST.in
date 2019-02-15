@@ -1,0 +1,1 @@
+include src/ghwh_data/payloads/*.json.j2
