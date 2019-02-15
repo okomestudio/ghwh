@@ -48,4 +48,10 @@ setup(
     url="https://github.com/okomestudio/github-webhook",
     install_requires=requirements("requirements.txt"),
     extra_require={"dev": requirements("requirements-dev.txt")},
+    entry_points={
+        "console_scripts": [
+            "send_event=github_webhook.cli.send_event:main",
+            "simple_server=github_webhook.cli.simple_server:main",
+        ]
+    },
 )
