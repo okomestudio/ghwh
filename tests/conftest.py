@@ -3,7 +3,7 @@ from flask.testing import FlaskClient
 
 import pytest
 
-from github_webhook.api.webhook import webhook
+from ghwh.api.webhook import webhook
 
 
 @pytest.fixture(scope="session")

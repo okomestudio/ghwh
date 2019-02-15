@@ -1,7 +1,7 @@
 import pytest
 
-from github_webhook import __version__
-from github_webhook import callbacks
+from ghwh import __version__
+from ghwh import callbacks
 
 
 class APITestCase:

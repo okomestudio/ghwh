@@ -1,5 +1,5 @@
-from github_webhook.callbacks import register
-from github_webhook.app import start
+from ghwh.callbacks import register
+from ghwh.app import start
 
 
 def handler(payload):

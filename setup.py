@@ -7,7 +7,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-def find_meta(category, fpath="src/github_webhook/__init__.py"):
+def find_meta(category, fpath="src/ghwh/__init__.py"):
     here = os.path.abspath(os.path.dirname(__file__))
     with codecs.open(os.path.join(here, fpath), "r") as f:
         package_root_file = f.read()
@@ -36,7 +36,7 @@ def requirements(*filenames):
 
 
 setup(
-    name="github-webhook",
+    name="ghwh",
     description="GitHub webhook handler app",
     author=find_meta("author"),
     version=find_meta("version"),
@@ -45,13 +45,13 @@ setup(
     package_dir={"": "src"},
     packages=find_packages("src"),
     scripts=[],
-    url="https://github.com/okomestudio/github-webhook",
+    url="https://github.com/okomestudio/ghwh",
     install_requires=requirements("requirements.txt"),
     extra_require={"dev": requirements("requirements-dev.txt")},
     entry_points={
         "console_scripts": [
-            "send_event=github_webhook.cli.send_event:main",
-            "simple_server=github_webhook.cli.simple_server:main",
+            "send_event=ghwh.cli.send_event:main",
+            "simple_server=ghwh.cli.simple_server:main",
         ]
     },
 )
