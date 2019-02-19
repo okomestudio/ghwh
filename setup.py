@@ -42,9 +42,7 @@ setup(
     version=find_meta("version"),
     platforms=["Linux"],
     classifiers=[],
-    package_data={
-        "ghwh_data": ["payloads/*.j2"],
-    },
+    package_data={"ghwh_data": ["payloads/*.j2"]},
     package_dir={"": "src"},
     packages=find_packages("src"),
     scripts=[],
@@ -53,8 +51,8 @@ setup(
     extra_require={"dev": requirements("requirements-dev.txt")},
     entry_points={
         "console_scripts": [
-            "send_event=ghwh.cli.send_event:main",
-            "simple_server=ghwh.cli.simple_server:main",
+            "send_event=ghwh_cli.send_event:main",
+            "simple_server=ghwh_cli.simple_server:main",
         ]
     },
 )
