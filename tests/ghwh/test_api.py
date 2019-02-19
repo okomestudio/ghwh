@@ -27,4 +27,4 @@ class TestAPI(APITestCase):
             "X-Hub-Signature": "sha1=7d38cdd689735b008b3c702edd92eea23791c5f6",
         }
         resp = self.cli.post("webhook", json=payload, headers=headers)
-        assert 0
+        # assert 0
