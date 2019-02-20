@@ -1,13 +1,14 @@
-from ghwh import register_callback
-from ghwh import start
+from ghwh import init_app
+from ghwh import register
 
 
-def handler(payload):
+def handler(headers, payload):
+    print(headers)
     print(payload)
 
 
-register_callback("push", handler)
-
-
 def main():
-    start()
+    register("push", handler)
+
+    app = init_app()
+    app.run()

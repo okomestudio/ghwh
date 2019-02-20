@@ -2,5 +2,6 @@ __author__ = "Taro Sato"
 __version__ = "0.1.0.dev0"
 
 
-from ghwh.app import start
-from ghwh.callbacks import register as register_callback
+from .app import init_app  # noqa
+from .callbacks import register  # noqa
+from .celery import init_celery  # noqa

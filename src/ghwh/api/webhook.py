@@ -34,7 +34,9 @@ def post_webhook():
             raise Exception("Signature mismatch")
 
     try:
-        resp = callbacks.run(event, payload)
+        callbacks.run(event, headers, payload)
     except callbacks.NoCallbackError:
         raise
-    return _resp({"status": "Accepted", "message": "Commit message received"}, 202)
+    return _resp(
+        {"status": "Accepted", "message": "Commit message received", "guid": guid}, 202
+    )

@@ -16,7 +16,7 @@ def get_headers(event):
 
 def clargs():
     p = ArgumentParser()
-    p.add_argument("-e", "--event", choices=("push",))
+    p.add_argument("event", nargs="?", choices=("push",), default="push")
     p.add_argument("--endpoint", default="http://localhost:5000/webhook")
     return p.parse_args()
 
