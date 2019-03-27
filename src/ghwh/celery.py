@@ -1,9 +1,18 @@
 from celery import Celery
+from flask import Flask
 
 from . import config
 
 
-def init_celery(app):
+def init_celery(app: Flask) -> Celery:
+    """Initialize Celery application.
+
+    Args:
+        app: Flask app.
+
+    Returns:
+        Celery app.
+    """
     app.config.update(
         CELERY_BROKER_URL=config.celery_broker,
         CELERY_RESULT_BACKEND=config.celery_backend,

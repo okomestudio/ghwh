@@ -28,15 +28,26 @@ def post_webhook():
     event = headers["X-GitHub-Event"]
     guid = headers["X-GitHub-Delivery"]
 
-    secret = headers.get("X-Hub-Signature")
+    signature = headers.get("X-Hub-Signature")
     if config.webhook_secret:
-        if not signatures_match(request.data, secret, config.web_secret):
-            raise Exception("Signature mismatch")
+        digest, signature = signature.split("=")
+        if not signatures_match(request.data, config.webhook_secret, digest, signature):
+            return _resp(
+                {"status": "Rejected", "message": "Signature mismatch", "guid": guid},
+                400,
+            )
 
     try:
         callbacks.run(event, headers, payload)
     except callbacks.NoCallbackError:
-        raise
+        return _resp(
+            {
+                "status": "Rejected",
+                "message": "No registered callback for the event",
+                "guid": guid,
+            },
+            400,
+        )
     return _resp(
         {"status": "Accepted", "message": "Commit message received", "guid": guid}, 202
     )
