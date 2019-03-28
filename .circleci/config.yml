@@ -11,25 +11,28 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
+      - run:
+          name: Generate cache key
+          command: ./checksum > /tmp/checksum.txt
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
+            - v1-dependencies-{{ checksum "/tmp/checksum.txt" }}
             - v1-dependencies-
       - run:
           name: Install dependencies
           command: |
             python3 -m venv venv
             . venv/bin/activate
-            pip install -r requirements.txt
+            pip install -e .[dev]
       - save_cache:
           paths:
             - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
+          key: v1-dependencies-{{ checksum "/tmp/checksum.txt" }}
       - run:
           name: Run tests
           command: |
             . venv/bin/activate
-            pytest tests/
+            pytest -vv --cov=src/ --cov-report=term-missing tests/
       - store_artifacts:
           path: test-reports
           destination: test-reports
