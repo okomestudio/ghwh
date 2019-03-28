@@ -48,7 +48,7 @@ setup(
     scripts=[],
     url="https://github.com/okomestudio/ghwh",
     install_requires=requirements("requirements.txt"),
-    extra_require={"dev": requirements("requirements-dev.txt")},
+    extras_require={"dev": requirements("requirements-dev.txt")},
     entry_points={
         "console_scripts": [
             "send_event=ghwh_cli.send_event:main",
