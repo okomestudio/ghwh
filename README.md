@@ -1,3 +1,6 @@
+[![CircleCI](https://circleci.com/gh/okomestudio/ghwh.svg?style=svg)](https://circleci.com/gh/okomestudio/ghwh)
+
+
 # ghwh
 
 GitHub webhook handler app.
