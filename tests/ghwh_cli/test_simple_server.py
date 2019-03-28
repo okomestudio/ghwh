@@ -15,5 +15,8 @@ class TestSimpleServer:
 
     def test_main(self):
         with mock.patch("ghwh_cli.simple_server.init_app") as init_app:
+            app = mock.Mock()
+            init_app.return_value = app
             main()
             init_app.assert_called()
+            app.run.assert_called()
