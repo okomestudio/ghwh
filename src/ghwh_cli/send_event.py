@@ -1,6 +1,6 @@
 from argparse import ArgumentParser
 
-import requests
+from requests import post
 
 from ghwh_data import load
 
@@ -14,18 +14,19 @@ def get_headers(event):
     return headers
 
 
-def clargs():
+def argparser(args=None):
     p = ArgumentParser()
     p.add_argument("event", nargs="?", choices=("push",), default="push")
     p.add_argument("--endpoint", default="http://localhost:5000/webhook")
-    return p.parse_args()
+    return p
 
 
-def main():
-    args = clargs()
+def main(args=None):
+    parser = argparser()
+    args = parser.parse_args(args=args)
     event = args.event
     endpoint = args.endpoint
     headers = get_headers(event)
     payload = load(event + ".json")
-    resp = requests.post(endpoint, json=payload, headers=headers)
+    resp = post(endpoint, json=payload, headers=headers)
     print(resp)

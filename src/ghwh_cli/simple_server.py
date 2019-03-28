@@ -9,6 +9,5 @@ def handler(headers, payload):
 
 def main():
     register("push", handler)
-
     app = init_app()
     app.run()
