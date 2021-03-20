@@ -1,4 +1,4 @@
 celery==4.3.0rc1
 flask==1.0.2
-jinja2==2.10
+jinja2==2.11.3
 requests==2.21.0
